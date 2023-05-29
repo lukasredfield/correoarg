@@ -6,5 +6,8 @@ import java.util.UUID;
 
 public interface UserRepository {
   User find(UUID id) throws UserNotFoundException;
+
+  void create(User user);
+
   void save(User user);
 }

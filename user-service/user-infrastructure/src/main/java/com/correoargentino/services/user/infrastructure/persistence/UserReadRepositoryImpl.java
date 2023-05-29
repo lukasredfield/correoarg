@@ -24,4 +24,6 @@ public class UserReadRepositoryImpl implements UserReadRepository {
       return Optional.empty();
     }
   }
+
+
 }
