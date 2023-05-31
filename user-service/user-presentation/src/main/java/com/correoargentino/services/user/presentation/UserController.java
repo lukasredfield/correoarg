@@ -163,6 +163,48 @@ public class UserController {
                   mediaType = MediaType.APPLICATION_JSON_VALUE))
       }
   )
+
+//  @GetMapping(value = "all")
+//  public ResponseEntity<GetUserResponse> getAllUser() {
+//    var user = userService.getAllUser();
+//    return new ResponseEntity<>(new GetUserResponse(user), HttpStatus.OK);
+//  }
+//
+//  /**
+//   * Dispatch the given {@code command} to the CommandHandler subscribed to the given
+//   * {@code command}'s name. When the command is processed, one of the callback's methods is called,
+//   * depending on the result of the processing.
+//   *
+//   * @param id The ID of the customer
+//   */
+//  @Operation(
+//          summary = "Update a user",
+//          description = "This endpoint update a user.",
+//          parameters = {
+//                  @Parameter(
+//                          name = "id",
+//                          description = "The ID of the user to update, Cannot be empty",
+//                          required = true)
+//          },
+//          responses = {
+//                  @ApiResponse(
+//                          responseCode = "204",
+//                          description = "Successful operation"),
+//                  @ApiResponse(
+//                          responseCode = "404",
+//                          description = "User not found",
+//                          content = @Content(
+//                                  schema = @Schema(implementation = ErrorResponse.class),
+//                                  mediaType = MediaType.APPLICATION_JSON_VALUE)),
+//                  @ApiResponse(
+//                          responseCode = "500",
+//                          description = "Service not available",
+//                          content = @Content(
+//                                  schema = @Schema(implementation = ErrorResponse.class),
+//                                  mediaType = MediaType.APPLICATION_JSON_VALUE))
+//          }
+//  )
+
   @PutMapping(value = "{id}")
   public ResponseEntity<Void> updateUser(
       @PathVariable UUID id,

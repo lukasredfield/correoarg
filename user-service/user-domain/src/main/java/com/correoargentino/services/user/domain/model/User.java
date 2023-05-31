@@ -4,12 +4,12 @@ import com.correoargentino.services.user.domain.primitive.AggregateRoot;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-public class User extends AggregateRoot {
+@AllArgsConstructor
+public class User extends AggregateRoot<UUID> {
 
   private UUID id;
   private String name;

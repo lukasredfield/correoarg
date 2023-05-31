@@ -25,7 +25,7 @@ public class CreateUsertCommandHandler implements CommandHandler<CreateUserComma
             command.getCreatedAt(),
             command.getUpdatedAt()
     );
-    userRepository.save(user);
+    userRepository.create(user);
     return user.getId();
   }
 }

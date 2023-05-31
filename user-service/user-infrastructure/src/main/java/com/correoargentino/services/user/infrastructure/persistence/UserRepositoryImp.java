@@ -4,7 +4,7 @@ import com.correoargentino.services.user.application.exception.UserNotFoundExcep
 import com.correoargentino.services.user.application.port.output.UserRepository;
 import com.correoargentino.services.user.domain.model.User;
 import com.correoargentino.services.user.infrastructure.persistence.entity.UserEntity;
-import com.correoargentino.services.user.infrastructure.persistence.mapper.UserMapper;
+import com.correoargentino.services.user.infrastructure.persistence.mapper.imp.UserMapperImp;
 import com.correoargentino.services.user.infrastructure.persistence.repository.UserEntityRepository;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserRepositoryImp implements UserRepository {
   private final UserEntityRepository userEntityRepository;
-  private final UserMapper userMapper;
+  private final UserMapperImp userMapperImp;
 
   @Override
   public User find(UUID id) {
     return userEntityRepository.findById(id)
-        .map(userMapper::toAggregate)
+        .map(userMapperImp::toAggregate)
         .orElseThrow(() -> new UserNotFoundException(id));
   }
 
@@ -31,13 +31,13 @@ public class UserRepositoryImp implements UserRepository {
 
   @Override
   public void create(User user) {
-    UserEntity userEntity = userMapper.fromAggregate(user);
+    UserEntity userEntity = userMapperImp.fromAggregate(user);
     userEntityRepository.save(userEntity);
   }
 
 
   @Override
   public void save(User user) {
-    userEntityRepository.save(userMapper.fromAggregate(user));
+    userEntityRepository.save(userMapperImp.fromAggregate(user));
   }
 }

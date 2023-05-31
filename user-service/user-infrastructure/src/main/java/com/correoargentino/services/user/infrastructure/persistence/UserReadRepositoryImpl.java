@@ -25,5 +25,35 @@ public class UserReadRepositoryImpl implements UserReadRepository {
     }
   }
 
+  /**
+   * Método para prueba
+   * @return
+   */
+  @Override
+  public Optional<User> findAllUser() {
+    try {
+      var sql = "SELECT * FROM users";
+      var result = jdbcTemplate.query(sql, (rs, rowNum) ->
+              new User(
+                      UUID.fromString(rs.getString("id")))
+      );
+
+      if (result.isEmpty()) {
+        return Optional.empty();
+      }
+
+      // Aquí puedes decidir cómo manejar el caso de múltiples usuarios encontrados.
+      // Puedes devolver una lista de usuarios o simplemente devolver el primer usuario encontrado.
+
+      return Optional.of(result.get(0)); // Devuelve el primer usuario encontrado
+
+      // O bien, devuelve la lista completa de usuarios encontrados
+      // return Optional.of(result);
+
+    } catch (Exception e) {
+      return Optional.empty();
+    }
+  }
+
 
 }

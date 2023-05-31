@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
   public User getUser(GetUserQuery query) {
     return messageBus.dispatch(query);
   }
+
+  @Override
+  public User getAllUser(GetUserQuery query) {
+    return null;
+  }
 }
