@@ -1,16 +1,22 @@
 package com.correoargentino.services.user.domain.primitive;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+import java.time.LocalDateTime;
+
 
 @Data
-public abstract class AggregateRoot extends Entity<UUID> {
-  protected AggregateRoot(UUID id) {
-    super(id);
-  }
+@AllArgsConstructor
+@NoArgsConstructor
+public abstract class AggregateRoot<T> extends Entity<T> {
+  protected LocalDateTime createdAt;
+  protected LocalDateTime updatedAt;
 
-  protected AggregateRoot() {
-    this(null);
+  protected AggregateRoot(T id, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    super(id);
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
   }
 }

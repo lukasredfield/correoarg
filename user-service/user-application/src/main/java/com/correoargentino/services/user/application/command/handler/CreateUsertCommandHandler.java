@@ -15,7 +15,16 @@ public class CreateUsertCommandHandler implements CommandHandler<CreateUserComma
 
   @Override
   public UUID handle(CreateUserCommand command) {
-    var user = new User();
+    var user = new User(
+            command.getId(),
+            command.getName(),
+            command.getLastname(),
+            command.getMailAddress(),
+            command.getPassword(),
+            command.getPhoneNumber(),
+            command.getCreatedAt(),
+            command.getUpdatedAt()
+    );
     userRepository.save(user);
     return user.getId();
   }

@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-@AllArgsConstructor
 public class UserMapperImpl extends AggregateRoot {
 
     private UUID id;
