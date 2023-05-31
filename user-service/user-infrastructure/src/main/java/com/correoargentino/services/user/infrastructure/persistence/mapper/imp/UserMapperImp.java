@@ -23,8 +23,8 @@ public class UserMapperImp implements UserMapper {
     }
 
     @Override
-    public User toAggregate(UserEntity userEntity) {
-        User user = new User(
+    public User toAggregate(UserEntity userEntity) {     /* esta devolviendo directamente el objeto User creado sin necesidad de asignarlo a una variable adicional*/
+        return new User(
                 userEntity.getId(),
                 userEntity.getName(),
                 userEntity.getLastname(),
@@ -34,6 +34,6 @@ public class UserMapperImp implements UserMapper {
                 userEntity.getCreatedAt(),
                 userEntity.getUpdatedAt()
         );
-        return user;
     }
+
 }

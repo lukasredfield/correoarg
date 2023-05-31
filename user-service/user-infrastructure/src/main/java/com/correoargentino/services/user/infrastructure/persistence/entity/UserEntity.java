@@ -4,12 +4,12 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.Data;
 
 
-@Getter
-@Setter
+
+@Data
 @Entity
 @Table(name = "users")
 public class UserEntity {
